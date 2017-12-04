@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: gitlab-container
-    image: gitlab/gitlab-ce
+    image: gitlab/gitlab-ce:latest
     readinessProbe:
       httpGet:
         path: /index.php
