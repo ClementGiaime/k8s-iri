@@ -1,0 +1,71 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Install Docker
+      block:
+        - apt:
+          update_cache: yes
+
+        - apt: name={{ item }} state=installed
+          with_items:
+            - apt-transport-https
+            - curl
+            - software-properties-common
+            - linux-image-extra-4.10.0-38-generic
+            - linux-image-extra-virtual
+
+        - get_url:
+            url: https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e
+            dest: /docker.key
+
+        - apt_key:
+            file: /docker.key
+            state: present
+
+        - apt_repository:
+            repo: deb https://packages.docker.com/1.13/apt/repo/ ubuntu-{{ansible_distribution_release }} main
+            state: present
+
+        - apt: name=docker-engine state=installed
+          update_cache: yes
+
+      when: ansible_distribution == 'Ubuntu'
+      become: true
+      become_user: root
+      become_method: sudo
+
+    - name: Install Kubernetes
+      block:
+        - get_url:
+            url:  https://packages.cloud.google.com/apt/doc/apt-key.gpg
+            dest: /k8s.key
+
+        - apt_key:
+            file: /k8s.key
+            state: present
+
+        - apt_repository:
+            repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+            state: present
+
+        - apt:
+          update_cache: yes
+
+        - apt: name={{ item }} state=installed
+          with_items:
+            - kubelet
+            - kubeadm
+            - kubectl
+      when: ansible_distribution == 'Ubuntu'
+      become: true
+      become_user: root
+      become_method: sudo
+
+
+
+#Lauch playbook
+#ansible-playbook Docker_K8s.yml --extra-vars "ansible_sudo_pass=<PassWord>"
+
+# sudo apt-get --purge remove docker-engine kubelet kubeadm kubectl
+# sudo apt autoremove
