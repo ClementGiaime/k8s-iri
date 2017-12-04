@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: pod
+metadata:
+  name: gitlab-pod
+    label:
+      app: gitlab
+spec:
+  containers:
+  - args:
+    - run
+    image: gitlab/gitlab-ce:latest
+    imagePullPolicy: Always
+    name: gitlab-container
+  restartPolicy: Always
