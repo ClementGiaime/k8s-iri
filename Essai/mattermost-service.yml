@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mattermost-service
+spec:
+  selector:
+    app: mattermost
+  ports:
+  - protocol: TCP
+    port: 8065
+    targetPort: 8065
+  externalIPs:
+    - 192.168.168.100

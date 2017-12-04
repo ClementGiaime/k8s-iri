@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mattermost-pod
+  labels:
+    app: mattermost
+spec:
+  containers:
+  - name: mattermost-container
+    image: mattermost/mattermost-preview
+    readinessProbe:
+      httpGet:
+        path: /index.php
+        port: 8065
+      initialDelaySeconds: 3
+      periodSeconds: 3
