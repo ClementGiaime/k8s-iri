@@ -8,11 +8,14 @@ A l'aide d'un orchestrateur de conteneur, choisir une ou des applications à hé
 Proposé aux développeurs de l'entreprise x des outils web afin de facilité le travail en équipe !
 
 ## Qu'est-ce-qui nous faut
-* Logiciel de gestion de versions décentralisé
+* Logiciel de gestion de versions code décentralisée
 * Logiciel de communication
 
 ## Solutions proposées
-* GitLab
+* Gestion de versions code
+  * GitLab
+  * Bitbucket ??
 * Comunication
   * Rocket.Chat
   * Mattermost
+  * TeamSpeak
