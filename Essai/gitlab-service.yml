@@ -1,13 +1,22 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gitlab-service
+  name: gitlab
 spec:
   selector:
     app: gitlab
   ports:
-  - protocol: TCP
-    port: 80
+  - name: http
+    protocol: TCP
+    port: 8888
     targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 4443
+    targetPort: 443
+  - name: ssh
+    protocol: TCP
+    port: 2222
+    targetPort: 22
   externalIPs:
-    - 192.168.168.100
+    - 10.25.25.100
