@@ -12,3 +12,5 @@ spec:
      containers:
      - name: gitlab-container
        image: gitlab/gitlab-ce:latest
+     nodeSelector:
+       TypeOfPod: GitLab

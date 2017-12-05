@@ -8,11 +8,11 @@ spec:
   ports:
   - name: http
     protocol: TCP
-    port: 8888
+    port: 8080
     targetPort: 80
   - name: https
     protocol: TCP
-    port: 4443
+    port: 4433
     targetPort: 443
   - name: ssh
     protocol: TCP
@@ -20,5 +20,5 @@ spec:
     targetPort: 22
   externalIPs:
     - 10.25.25.130
-    - 10.25.25.120
+    - 10.25.25.110
 #Expose les IPs sur les nodes ou les pod tourne
