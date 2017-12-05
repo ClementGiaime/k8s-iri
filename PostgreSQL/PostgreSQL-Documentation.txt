@@ -1,0 +1,2 @@
+https://hackernoon.com/deploying-postgresql-on-kubernetes-7d00a9c5b874
+https://www.xenonstack.com/blog/how-to-deploy-postgresql-on-kubernetes
