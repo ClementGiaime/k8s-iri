@@ -1,0 +1,14 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: gitlab-deployment
+spec:
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       app: gitlab
+   spec:
+     containers:
+     - name: gitlab-container
+       image: gitlab/gitlab-ce:latest
