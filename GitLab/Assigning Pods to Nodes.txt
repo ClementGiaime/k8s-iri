@@ -4,6 +4,8 @@
 kubectl label nodes <node-name> <label-key>=<label-value>
 
 kubectl label nodes node-1 TypeOfPod=GitLab
+kubectl label nodes node-3 TypeOfPod=GitLab
+
 kubectl label nodes node-2 TypeOfPod=PostgreSQL
 
 kubectl get nodes --show-labels
