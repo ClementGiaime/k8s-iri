@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: postgre-mysql
+  labels:
+    app: postgre
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgre
+        tier: sql
+    spec:
+      containers:
+      - image: postgres
+        name: sql
+        env:
+        - name: POSTGRES_USER
+        value: postgres
+        - name: POSTGRES_PASSWORD
+        value: superpostgres
+        - name: PGDATA
+        value: /var/lib/postgresql/data/pgdata
+        - name: POSTGRES_DB
+        value: GitLab
+      nodeSelector:
+        TypeOfPod: sql

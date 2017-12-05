@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gitlab
+  name: gitlab-pod
   labels:
     app: gitlab
 spec:
   containers:
-  - name: gitlab
+  - name: gitlab-container
     image: gitlab/gitlab-ce:latest

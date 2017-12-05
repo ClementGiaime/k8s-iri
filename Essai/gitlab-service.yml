@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gitlab
+  name: gitlab-service
 spec:
   selector:
     app: gitlab
@@ -19,4 +19,4 @@ spec:
     port: 2222
     targetPort: 22
   externalIPs:
-    - 10.25.25.100
+    - 10.25.25.130
