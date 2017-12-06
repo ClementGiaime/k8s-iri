@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: postgre-mysql
+  name: postgre-sql
   labels:
     app: postgre
 spec:
