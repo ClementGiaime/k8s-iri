@@ -11,3 +11,4 @@ spec:
     targetPort: 80
   externalIPs:
     - 10.25.25.100
+    - 10.25.25.110

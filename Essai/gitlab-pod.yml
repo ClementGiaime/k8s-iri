@@ -8,3 +8,10 @@ spec:
   containers:
   - name: gitlab-container
     image: gitlab/gitlab-ce:latest
+    ports:
+    - containerPort: 80
+      name: gitlabhttp
+    - containerPort: 443
+      name: gitlabhttps
+    - containerPort: 22
+      name: gitlabssh

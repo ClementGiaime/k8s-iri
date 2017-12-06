@@ -19,4 +19,4 @@ spec:
     port: 2222
     targetPort: 22
   externalIPs:
-    - 10.25.25.130
+    - 10.25.25.100

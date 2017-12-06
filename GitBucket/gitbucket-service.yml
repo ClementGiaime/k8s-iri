@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gitbucket-service
+spec:
+  selector:
+    app: gitbucket
+  ports:
+  - name: buckethttp
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  - name: bucketssh
+    protocol: TCP
+    port: 29418
+    targetPort: 29418
+  externalIPs:
+    - 10.25.25.100
