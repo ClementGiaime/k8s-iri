@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: gitlab-deployment
+spec:
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: gitlab
+   spec:
+     containers:
+     - name: gitlab-container
+       image: gitlab/gitlab-ce:latest
+       volumeMounts:
+       - name: gitlab-mount
+         mountPath: /etc/gitlab/
+     volumes:
+     - name: gitlab-mount
+       configMap:
+         name: gitlab-rb
+     nodeSelector:
+       TypeOfPod: GitLab
