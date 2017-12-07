@@ -47,6 +47,7 @@ apiVersion: v1
 metadata:
   name: gitlab-service
 spec:
+  type: LoadBalancer
   selector:
     app: gitlab
   ports:
@@ -62,5 +63,5 @@ spec:
     protocol: TCP
     port: 2222
     targetPort: 22
-  externalIPs:
-    - 10.25.25.100
+#  externalIPs:
+#    - 10.25.25.100
