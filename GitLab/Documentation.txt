@@ -1,0 +1,6 @@
+https://hub.docker.com/r/sameersbn/gitlab/#external-postgresql-server
+
+CREATE ROLE gitlab with LOGIN CREATEDB PASSWORD 'password';
+CREATE DATABASE gitlabhq_production;
+GRANT ALL PRIVILEGES ON DATABASE gitlabhq_production to gitlab;
+CREATE EXTENSION pg_trgm;

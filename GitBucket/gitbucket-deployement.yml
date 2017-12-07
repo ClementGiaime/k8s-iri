@@ -14,7 +14,7 @@ spec:
        image: f99aq8ove/gitbucket
        env:
        - name: GITBUCKET_DB_URL
-         value: jdbc:postgresql://10.244.4.3/
+         value: jdbc:postgresql://postgresql-service/
        - name: GITBUCKET_DB_USER
          value: postgres
        - name: GITBUCKET_DB_PASSWORD

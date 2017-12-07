@@ -7,10 +7,13 @@ data:
  #gitlab-rb-file-name: gitlabt
  # file-like keys
  gitlab.rb: |
+   # Disable the built-in Postgres
    postgresql['enable'] = false
+   # Fill in the values for database.yml
    gitlab_rails['db_adapter'] = 'postgresql'
    gitlab_rails['db_encoding'] = 'utf8'
-   gitlab_rails['db_host'] = '10.244.4.3'
+   gitlab_rails['db_host'] = 'postgresql-service'
+   gitlab_rails['db_name'] = 'gitlabhq_production'
    gitlab_rails['db_port'] = '5432'
    gitlab_rails['db_username'] = 'postgres'
    gitlab_rails['db_password'] = 'superpostgres'
