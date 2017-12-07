@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
  name: gitbucket-deployment
 spec:
- replicas: 2
+ replicas: 1
  template:
    metadata:
      labels:
@@ -12,5 +12,12 @@ spec:
      containers:
      - name: gitbucket-container
        image: f99aq8ove/gitbucket
+       env:
+       - name: GITBUCKET_DB_URL
+         value: jdbc:postgresql://10.244.4.3/
+       - name: GITBUCKET_DB_USER
+         value: postgres
+       - name: GITBUCKET_DB_PASSWORD
+         value: superpostgres
 #     nodeSelector:
 #       TypeOfPod: gitbucket

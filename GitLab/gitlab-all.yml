@@ -4,49 +4,38 @@ metadata:
  name: gitlab-configmap
 data:
  # property-like keys
- gitlab-rb-file-name: gitlab
+ #gitlab-rb-file-name: gitlabt
  # file-like keys
- gitlab: |
-   # Disable the built-in Postgres
+ gitlab.rb: |
    postgresql['enable'] = false
-   # Fill in the connection details for database.yml
    gitlab_rails['db_adapter'] = 'postgresql'
    gitlab_rails['db_encoding'] = 'utf8'
-   gitlab_rails['db_host'] = 'postgresql-deployment'
+   gitlab_rails['db_host'] = '10.244.4.3'
    gitlab_rails['db_port'] = '5432'
    gitlab_rails['db_username'] = 'postgres'
    gitlab_rails['db_password'] = 'superpostgres'
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
- name: configmap-gitlab-deployment
- labels:
-   name: configmap-gitlab-deployment
+ name: gitlab-deployment
 spec:
  replicas: 1
- selector:
-   matchLabels:
-     name: configmap-gitlab
  template:
    metadata:
      labels:
-       name: configmap-gitlab
+       app: gitlab
    spec:
      containers:
      - name: gitlab-container
        image: gitlab/gitlab-ce:latest
-       #command: [ "game-server", "--config-dir=/etc/game/cfg" ]
        volumeMounts:
-       - name: config-volume-gitlab
-         mountPath: /etc/gitlab/
+       - name: gitlab-volume
+         mountPath: /etc/gitlab
      volumes:
-     - name: config-volume-gitlab
+     - name: gitlab-volume
        configMap:
          name: gitlab-configmap
-         items:
-         - key: gitlab-rb
-           path: gitlab.rb
      nodeSelector:
        TypeOfPod: GitLab
 ---
@@ -56,7 +45,7 @@ metadata:
   name: gitlab-service
 spec:
   selector:
-    name: configmap-gitlab
+    app: gitlab
   ports:
   - name: http
     protocol: TCP
