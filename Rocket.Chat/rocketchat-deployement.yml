@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: rocketchat-deployment
+spec:
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: rocketchat
+   spec:
+     containers:
+     - name: rocketchat-container
+       image: rocket.chat
+       env:
+       - name: ROOT_URL
+         value: http://chat.giaime.fr
+       - name: MONGO_URL
+         value: mongodb://mongo-service/rocketchat
+#     nodeSelector:
+#       TypeOfPod: rocketchat
