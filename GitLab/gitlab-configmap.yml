@@ -1,23 +1,20 @@
 apiVersion: v1
-data:
-  gitlab.rb: |+
-    # Disable the built-in Postgres
-    postgresql['enable'] = false
-
-    # Fill in the connection details for database.yml
-    gitlab_rails['db_adapter'] = 'postgresql'
-    gitlab_rails['db_encoding'] = 'utf8'
-    gitlab_rails['db_host'] = 'postgresql-deployment'
-    gitlab_rails['db_port'] = '5432'
-    gitlab_rails['db_username'] = 'postgres'
-    gitlab_rails['db_password'] = 'superpostgres'
-
 kind: ConfigMap
 metadata:
-  creationTimestamp: 2017-12-06T18:27:54Z
-  name: gitlab-rb
-  namespace: default
-  resourceVersion: "7585"
-  selfLink: /api/v1/namespaces/default/configmaps/gitlab-rb
-  uid: 2c95e71d-dab3-11e7-9917-000c2904a99f
+ name: gitlab-rb
+data:
+ # property-like keys
+ #gitlab-rb-file-name: gitlabt
+ # file-like keys
+ gitlab.rb: |
+   # Disable the built-in Postgres
+   postgresql['enable'] = false
+   # Fill in the values for database.yml
+   gitlab_rails['db_adapter'] = 'postgresql'
+   gitlab_rails['db_encoding'] = 'utf8'
+   gitlab_rails['db_host'] = 'postgresql-service'
+   gitlab_rails['db_name'] = 'gitlabhq_production'
+   gitlab_rails['db_port'] = '5432'
+   gitlab_rails['db_username'] = 'postgres'
+   gitlab_rails['db_password'] = 'superpostgres'
 
