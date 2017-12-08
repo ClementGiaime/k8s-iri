@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: orion-service
+spec:
+  selector:
+    app: orion
+  ports:
+  - name: orionhttp
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  externalIPs:
+- 10.25.25.120
