@@ -19,3 +19,10 @@ Proposé aux développeurs de l'entreprise x des outils web afin de facilité le
   * Rocket.Chat
   * Mattermost
   * TeamSpeak
+## Link
+
+Dockerfile :
+* https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example
+
+
+
