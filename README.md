@@ -23,6 +23,12 @@ Proposé aux développeurs de l'entreprise x des outils web afin de facilité le
 
 Dockerfile :
 * https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example
-
-
-
+GitBucket :
+* https://hub.docker.com/r/f99aq8ove/gitbucket/
+PostgreSQL/
+* https://hackernoon.com/deploying-postgresql-on-kubernetes-7d00a9c5b874
+* https://www.xenonstack.com/blog/how-to-deploy-postgresql-on-kubernetes
+* https://www.guillaume-leduc.fr/le-stockage-distribue-avec-glusterfs.html
+GlusterFS:
+* http://docs.gluster.org/en/latest/Install-Guide/Install/
+* http://docs.gluster.org/en/latest/Install-Guide/Configure/

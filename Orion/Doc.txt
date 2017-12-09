@@ -1,1 +1,0 @@
-http://wiki.eclipse.org/Orion/Server_admin_guide#Running_disconnected_from_a_shell_on_Unix
