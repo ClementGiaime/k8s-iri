@@ -21,26 +21,28 @@ Proposé aux développeurs de l'entreprise x des outils web afin de facilité le
   * TeamSpeak
 ## Link
 
-Dockerfile :
-* https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example
-GitBucket :
-* https://hub.docker.com/r/f99aq8ove/gitbucket/
-PostgreSQL/
-* https://hackernoon.com/deploying-postgresql-on-kubernetes-7d00a9c5b874
-* https://www.xenonstack.com/blog/how-to-deploy-postgresql-on-kubernetes
-* https://www.guillaume-leduc.fr/le-stockage-distribue-avec-glusterfs.html
-GlusterFS:
-* http://docs.gluster.org/en/latest/Install-Guide/Install/
-* http://docs.gluster.org/en/latest/Install-Guide/Configure/
+* __Dockerfile :__
+  * https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example
+* __GitBucket :__
+  * https://hub.docker.com/r/f99aq8ove/gitbucket/
+* __PostgreSQL :__
+  * https://hackernoon.com/deploying-postgresql-on-kubernetes-7d00a9c5b874
+  * https://www.xenonstack.com/blog/how-to-deploy-postgresql-on-kubernetes
+  * https://www.guillaume-leduc.fr/le-stockage-distribue-avec-glusterfs.html
+* __GlusterFS:__
+  * http://docs.gluster.org/en/latest/Install-Guide/Install/
+  * http://docs.gluster.org/en/latest/Install-Guide/Configure/
+* __Docker Cleanup :__
+  * https://www.calazan.com/docker-cleanup-commands/
 
 ## Docker cleanup
-Kill all running containers
-* sudo docker kill $(sudo docker ps -q)
-Delete all stopped containers (including data-only containers)
-* sudo docker rm $(sudo docker ps -a -q)
-Delete all 'untagged/dangling' (<none>) images
-* sudo ocker rmi $(sudo docker images -q -f dangling=true)
-Delete ALL images
-* sudo docker rmi $(sudo docker images -q)
-https://www.calazan.com/docker-cleanup-commands/
+
+* __Kill all running containers :__
+  * sudo docker kill $(sudo docker ps -q)
+* __Delete all stopped containers (including data-only containers) :__
+  * sudo docker rm $(sudo docker ps -a -q)
+* __Delete all 'untagged/dangling' (<none>) images :__
+  * sudo ocker rmi $(sudo docker images -q -f dangling=true)
+* __Delete ALL images :__
+  * sudo docker rmi $(sudo docker images -q)
 
