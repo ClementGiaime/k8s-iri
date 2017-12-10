@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gluster-2-pod
+  labels:
+    app: gluster-2
+    serv: gluster-srv
+spec:
+  containers:
+  - name: gluster-2-container
+    image: clementgiaime/glusterfs:3.10
+    ports:
+    - containerPort: 111
+      protocol: udp
+    - containerPort: 111
+    - containerPort: 24007
+    - containerPort: 24008
+    - containerPort: 49152
+    - containerPort: 49153
+    - containerPort: 49154
+    - containerPort: 49155
+    - containerPort: 49156
+    - containerPort: 49157
+    - containerPort: 49158
+    - containerPort: 49159
+    - containerPort: 491560
+    volumeMounts:
+    - name: gluster-volume
+      mountPath: /srv/gluster
+  volumes:
+  - name: gluster-volume
+    hostPath:
+    path: /srv/gluster
+  nodeSelector:
+    TypeOfPod: gluster-2
