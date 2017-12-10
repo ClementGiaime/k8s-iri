@@ -45,4 +45,10 @@ Proposé aux développeurs de l'entreprise x des outils web afin de facilité le
   * sudo ocker rmi $(sudo docker images -q -f dangling=true)
 * __Delete ALL images :__
   * sudo docker rmi $(sudo docker images -q)
+  
+## Dns for pod
+### Pods
+__A Records__
+When enabled, pods are assigned a DNS A record in the form of pod-ip-address.my-namespace.pod.cluster.local.
+For example, a pod with __IP 1.2.3.4__ in the namespace default with a DNS name of __cluster.local__ would have an entry: __1-2-3-4.default.pod.cluster.local__
 
