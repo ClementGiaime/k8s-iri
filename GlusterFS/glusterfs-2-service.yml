@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gluster-1-pod
+  name: gluster-2-pod
 spec:
   selector:
-    app: gluster-1
+    app: gluster-2
   ports:
   - name: portmappertcp
     protocol: TCP

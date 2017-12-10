@@ -9,6 +9,7 @@ spec:
   containers:
   - name: gluster-2-container
     image: clementgiaime/glusterfs:3.10
+    imagePullPolicy: Always
     ports:
     - containerPort: 111
       protocol: UDP
@@ -27,12 +28,11 @@ spec:
     volumeMounts:
     - name: gluster-volume
       mountPath: /srv/gluster
-#    securityContext:
-#      capabilities:
-#        add:
-#        - SYS_ADMIN
-#        - MKNOD
-
+    securityContext:
+        capabilities:
+          add:
+            - SYS_ADMIN
+            - MKNOD
   volumes:
   - name: gluster-volume
     hostPath:

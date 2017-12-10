@@ -1,5 +1,5 @@
-apiVersion: extensions/v1beta1
-kind: PodSecurityPolicy
+apiVersion: v1
+kind: Pod
 metadata:
   name: gluster-1-pod
   labels:
@@ -9,6 +9,7 @@ spec:
   containers:
   - name: gluster-1-container
     image: clementgiaime/glusterfs:3.10
+    imagePullPolicy: Always
     ports:
     - containerPort: 111
       protocol: UDP
@@ -28,12 +29,13 @@ spec:
     - name: gluster-volume
       mountPath: /srv/gluster
     securityContext:
-    - privileged: true
+        capabilities:
+          add:
+            - SYS_ADMIN
+            - MKNOD
   volumes:
   - name: gluster-volume
     hostPath:
       path: /srv/gluster
   nodeSelector:
     TypeOfPod: gluster-1
-  securityContext:
-    privileged: true

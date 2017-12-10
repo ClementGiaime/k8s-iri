@@ -41,17 +41,11 @@ gluster2ip=$ip
 
 
 #Add resolv on /etc/hosts
-echo 1
 kubectl exec -ti gluster-1-pod -- bash -c "echo $gluster2ip gluster-2-pod >> /etc/hosts"
-echo 2
 kubectl exec -ti gluster-2-pod -- bash -c "echo $gluster1ip gluster-1-pod >> /etc/hosts"
-echo 3
 kubectl exec -ti gluster-1-pod -- bash -c "gluster peer probe gluster-2-pod"
 Check_return $?
-echo 4
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create gluster-fs-volume replica 2 gluster-1-pod:/srv/gluster gluster-2-pod:/srv/gluster force"
 Check_return $?
-echo 5
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start gluster-fs-volume"
 Check_return $?
-echo 6
