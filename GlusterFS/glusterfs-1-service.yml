@@ -1,0 +1,23 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gluster-1-service
+spec:
+  selector:
+    app: gluster-1
+  ports:
+  - port: 111
+    targetPort: 111
+  - protocol: UDP
+    port: 111
+    targetPort: 111
+  - port: 24007
+    targetPort: 24007
+  - port: 24008
+    targetPort: 24008
+  - port: 49152
+    targetPort: 49152
+  - port: 49153
+    targetPort: 49153
+  - port: 49154
+    targetPort: 49154

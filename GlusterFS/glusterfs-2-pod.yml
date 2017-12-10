@@ -11,7 +11,7 @@ spec:
     image: clementgiaime/glusterfs:3.10
     ports:
     - containerPort: 111
-      protocol: udp
+      protocol: UDP
     - containerPort: 111
     - containerPort: 24007
     - containerPort: 24008
@@ -23,13 +23,19 @@ spec:
     - containerPort: 49157
     - containerPort: 49158
     - containerPort: 49159
-    - containerPort: 491560
+    - containerPort: 49160
     volumeMounts:
     - name: gluster-volume
       mountPath: /srv/gluster
+#    securityContext:
+#      capabilities:
+#        add:
+#        - SYS_ADMIN
+#        - MKNOD
+
   volumes:
   - name: gluster-volume
     hostPath:
-    path: /srv/gluster
+      path: /srv/gluster
   nodeSelector:
     TypeOfPod: gluster-2
