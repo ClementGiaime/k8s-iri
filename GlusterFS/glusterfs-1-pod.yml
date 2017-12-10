@@ -28,7 +28,7 @@ spec:
     - name: gluster-volume
       mountPath: /srv/gluster
   volumes:
-  - name: postgres-volume
+  - name: gluster-volume
     hostPath:
     path: /srv/gluster
   nodeSelector:
