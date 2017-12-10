@@ -32,3 +32,15 @@ PostgreSQL/
 GlusterFS:
 * http://docs.gluster.org/en/latest/Install-Guide/Install/
 * http://docs.gluster.org/en/latest/Install-Guide/Configure/
+
+## Docker cleanup
+Kill all running containers
+* sudo docker kill $(sudo docker ps -q)
+Delete all stopped containers (including data-only containers)
+* sudo docker rm $(sudo docker ps -a -q)
+Delete all 'untagged/dangling' (<none>) images
+* sudo ocker rmi $(sudo docker images -q -f dangling=true)
+Delete ALL images
+* sudo docker rmi $(sudo docker images -q)
+https://www.calazan.com/docker-cleanup-commands/
+
