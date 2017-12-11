@@ -11,7 +11,7 @@ spec:
    spec:
      containers:
      - name: postgressql-container
-       image: postgres:9.6
+       image: postgres
        env:
        - name: POSTGRES_USER
          value: postgres
@@ -23,12 +23,25 @@ spec:
          value: gitlabhq_production
        volumeMounts:
        - name: postgres-volume
-         mountPath: /var/lib/postgresql/data/pgdata
+         mountPath: /var/lib/postgresql/data
      volumes:
      - name: postgres-volume
        glusterfs:
-         service: gluster-cluster
+         endpoints: gluster-cluster
          path: /gluster-fs-volume
          readOnly: false
-     nodeSelector:
-       TypeOfPod: PostgreSQL
+
+
+
+
+#       volumeMounts:
+#       - name: postgres-volume
+#         mountPath: /var/lib/postgresql/data/pgdata
+#     volumes:
+#     - name: postgres-volume
+#       glusterfs:
+#         endpoints: gluster-cluster
+#         path: /gluster-fs-volume
+#         readOnly: false
+ #    nodeSelector:
+ #      TypeOfPod: PostgreSQL

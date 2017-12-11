@@ -4,12 +4,12 @@ metadata:
   name: gluster-cluster
 subsets:
 - addresses:
-  - ip: 10.244.1.3
+  - ip: 10.244.1.5
   ports:
   - port: 1
     protocol: TCP
 - addresses:
-  - ip: 10.244.2.3
+  - ip: 10.244.2.6
   ports:
   - port: 1
     protocol: TCP
