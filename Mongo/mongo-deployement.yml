@@ -14,3 +14,12 @@ spec:
        image: mongo
 #     nodeSelector:
 #       TypeOfPod: mongo
+       volumeMounts:
+       - name: mongo-volume
+         mountPath: /data/db
+     volumes:
+     - name: mongo-volume
+       glusterfs:
+         endpoints: gluster-cluster
+         path: /gfsvol
+         readOnly: false

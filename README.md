@@ -52,3 +52,4 @@ __A Records__
 When enabled, pods are assigned a DNS A record in the form of pod-ip-address.my-namespace.pod.cluster.local.
 For example, a pod with __IP 1.2.3.4__ in the namespace default with a DNS name of __cluster.local__ would have an entry: __1-2-3-4.default.pod.cluster.local__
 
+https://docs.openshift.org/latest/install_config/storage_examples/gluster_example.html

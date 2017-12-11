@@ -1,0 +1,59 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gluster-service
+spec:
+  selector:
+    serv: gluster-srv
+  ports:
+  - name: portmappertcp
+    protocol: TCP
+    port: 111
+    targetPort: 111
+  - name: portmapperudp
+    protocol: UDP
+    port: 111
+    targetPort: 111
+  - name: glusterdaemon
+    protocol: TCP
+    port: 24007
+    targetPort: 24007
+  - name: management
+    protocol: TCP
+    port: 24008
+    targetPort: 24008
+  - name: firstbrick
+    protocol: TCP
+    port: 49152
+    targetPort: 49152
+  - name: secondbrick
+    protocol: TCP
+    port: 49153
+    targetPort: 49153
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: gluster-service
+subsets:
+  - addresses:
+      - ip: 10.107.140.200
+    ports:
+    - name: portmappertcp
+      protocol: TCP
+      port: 111
+    - name: portmapperudp
+      protocol: UDP
+      port: 111
+    - name: glusterdaemon
+      protocol: TCP
+      port: 24007
+    - name: management
+      protocol: TCP
+      port: 24008
+    - name: firstbrick
+      protocol: TCP
+      port: 49152
+    - name: secondbrick
+      protocol: TCP
+      port: 49153
