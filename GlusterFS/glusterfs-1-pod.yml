@@ -26,16 +26,26 @@ spec:
     - containerPort: 49159
     - containerPort: 49160
     volumeMounts:
-    - name: gluster-volume
-      mountPath: /srv/gluster
+    - name: mount-gitbucket
+      mountPath: /srv/gluster/GitBucket
+    - name: mount-mongo
+      mountPath: /srv/gluster/Mongo
+    - name: mount-postgresql
+      mountPath: /srv/gluster/PostgreSQL
     securityContext:
         capabilities:
           add:
             - SYS_ADMIN
             - MKNOD
   volumes:
-  - name: gluster-volume
+  - name: mount-gitbucket
     hostPath:
-      path: /srv/gluster
+      path: /srv/gluster/GitBucket
+  - name: mount-mongo
+    hostPath:
+      path: /srv/gluster/Mongo
+  - name: mount-postgresql
+    hostPath:
+      path: /srv/gluster/PostgreSQL
   nodeSelector:
     TypeOfPod: gluster-1
