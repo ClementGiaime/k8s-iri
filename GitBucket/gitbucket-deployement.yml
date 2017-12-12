@@ -19,5 +19,14 @@ spec:
          value: postgres
        - name: GITBUCKET_DB_PASSWORD
          value: superpostgres
+       volumeMounts:
+       - name: gitbucket-volume
+         mountPath: /gitbucket
+     volumes:
+     - name: gitbucket-volume
+       glusterfs:
+         endpoints: gluster-cluster
+         path: /gluster-fs-volume
+         readOnly: false
 #     nodeSelector:
 #       TypeOfPod: gitbucket
