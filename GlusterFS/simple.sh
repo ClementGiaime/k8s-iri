@@ -41,8 +41,8 @@ gluster2ip=$ip
 
 
 #Create repo /srv/gluster/  [ PostgreSQL, Mongo, GitBucket ]
-kubectl exec -ti gluster-1-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket"
-kubectl exec -ti gluster-2-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket"
+kubectl exec -ti gluster-1-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket /srv/gluster/Redis"
+kubectl exec -ti gluster-2-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket /srv/gluster/Redis"
 
 
 #Add resolv on /etc/hosts
@@ -51,8 +51,11 @@ Check_return $?
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-PostgreSQL replica 2 $gluster1ip:/srv/gluster/PostgreSQL $gluster2ip:/srv/gluster/PostgreSQL force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Mongo replica 2 $gluster1ip:/srv/gluster/Mongo $gluster2ip:/srv/gluster/Mongo force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-GitBucket replica 2 $gluster1ip:/srv/gluster/GitBucket $gluster2ip:/srv/gluster/GitBucket force"
+kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Redis replica 2 $gluster1ip:/srv/gluster/Redis $gluster2ip:/srv/gluster/Redis force"
 Check_return $?
+
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-PostgreSQL"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-Mongo"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-GitBucket"
+kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-Redis"
 Check_return $?

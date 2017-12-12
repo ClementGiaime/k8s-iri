@@ -32,6 +32,8 @@ spec:
       mountPath: /srv/gluster/Mongo
     - name: mount-postgresql
       mountPath: /srv/gluster/PostgreSQL
+    - name: mount-redis
+      mountPath: /srv/gluster/Redis
     securityContext:
         capabilities:
           add:
@@ -47,5 +49,8 @@ spec:
   - name: mount-postgresql
     hostPath:
       path: /srv/gluster/PostgreSQL
+  - name: mount-redis
+    hostPath:
+      path: /srv/gluster/Redis
   nodeSelector:
     TypeOfPod: gluster-1

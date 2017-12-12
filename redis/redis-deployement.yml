@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: redis-deployment
+spec:
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: redis
+   spec:
+     containers:
+     - name: redis-container
+       image: gredis
+       volumeMounts:
+       - name: redis-volume
+         mountPath: /data
+     volumes:
+     - name: redis-volume
+       glusterfs:
+         endpoints: gluster-service
+         path: /volume-redis
+         readOnly: false
