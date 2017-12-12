@@ -27,7 +27,7 @@ spec:
      volumes:
      - name: postgres-volume
        glusterfs:
-         endpoints: gluster-cluster
+         endpoints: gluster-service
          path: /gluster-fs-volume
          readOnly: false
 

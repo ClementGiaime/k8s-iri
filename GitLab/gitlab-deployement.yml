@@ -12,5 +12,14 @@ spec:
      containers:
      - name: gitlab-container
        image: gitlab/gitlab-ce:latest
+       volumeMounts:
+       - name: gitlab-volume
+         mountPath: /var/opt/gitlab
+     volumes:
+     - name: gitlab-volume
+       glusterfs:
+         endpoints: gluster-service
+         path: /gluster-fs-volume
+         readOnly: false
      nodeSelector:
        TypeOfPod: GitLab
