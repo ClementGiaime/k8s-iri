@@ -47,15 +47,15 @@ kubectl exec -ti gluster-2-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gl
 
 #Add resolv on /etc/hosts
 kubectl exec -ti gluster-1-pod -- bash -c "gluster peer probe $gluster2ip"
-Check_return $?
+#Check_return $?
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-PostgreSQL replica 2 $gluster1ip:/srv/gluster/PostgreSQL $gluster2ip:/srv/gluster/PostgreSQL force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Mongo replica 2 $gluster1ip:/srv/gluster/Mongo $gluster2ip:/srv/gluster/Mongo force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-GitBucket replica 2 $gluster1ip:/srv/gluster/GitBucket $gluster2ip:/srv/gluster/GitBucket force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Redis replica 2 $gluster1ip:/srv/gluster/Redis $gluster2ip:/srv/gluster/Redis force"
-Check_return $?
+#Check_return $?
 
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-PostgreSQL"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-Mongo"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-GitBucket"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-Redis"
-Check_return $?
+#Check_return $?

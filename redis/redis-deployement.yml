@@ -11,7 +11,7 @@ spec:
    spec:
      containers:
      - name: redis-container
-       image: gredis
+       image: redis
        volumeMounts:
        - name: redis-volume
          mountPath: /data
@@ -19,5 +19,5 @@ spec:
      - name: redis-volume
        glusterfs:
          endpoints: gluster-service
-         path: /volume-redis
+         path: /volume-Redis
          readOnly: false
