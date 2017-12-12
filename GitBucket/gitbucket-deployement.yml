@@ -25,7 +25,7 @@ spec:
      volumes:
      - name: gitbucket-volume
        glusterfs:
-         endpoints: gluster-cluster
+         endpoints: gluster-service
          path: /gluster-fs-volume
          readOnly: false
 #     nodeSelector:
