@@ -1,0 +1,21 @@
+http {
+    upstream rockerchat {
+        server rocketchat-service;
+    }
+
+    upstream gitlab {
+        server gitlab-service;
+    }
+
+    server {
+        listen 80;
+
+        location /rocketchat {
+            proxy_pass http://rocketchat;
+        }
+
+        localtion /gitlab {
+            proxy_pass http://gitlab;
+        }
+    }
+}
