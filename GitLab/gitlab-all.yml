@@ -7,6 +7,7 @@ data:
  #gitlab-rb-file-name: gitlabt
  # file-like keys
  gitlab.rb: |
+   external_url "http://10.25.25.90/gitlab"
    # Disable the built-in Postgres
    postgresql['enable'] = false
    # Fill in the values for database.yml
@@ -43,15 +44,15 @@ spec:
      - name: gitlab-volume
        configMap:
          name: gitlab-configmap
-     nodeSelector:
-       TypeOfPod: GitLab
+#     nodeSelector:
+#       TypeOfPod: GitLab
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: gitlab-service
 spec:
-  type: NodePod
+  type: NodePort
   selector:
     app: gitlab
   ports:
