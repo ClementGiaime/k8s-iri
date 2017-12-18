@@ -64,25 +64,20 @@ iface eth0:ucarp inet static
  ~ $ sudo /etc/init.d/networking restart
  ~ $ sudo apt-get install nginx
  
- 
-http {
-    upstream rockerchat {
-        server rocketchat-service;
-    }
-
-    upstream gitlab {
-        server gitlab-service;
+     upstream rocket {
+        server 10.25.25.100:30080;
+        server 10.25.25.110:30080;
+        server 10.25.25.120:30080;
+        server 10.25.25.130:30080;
+        server 10.25.25.140:30080;
     }
 
     server {
         listen 80;
 
-        location /rocketchat {
-            proxy_pass http://rocketchat;
-        }
-
-        localtion /gitlab {
-            proxy_pass http://gitlab;
+        location /rocket {
+            proxy_pass http://rocket;
         }
     }
-}
+
+
