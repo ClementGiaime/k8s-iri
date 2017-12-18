@@ -64,7 +64,11 @@ iface eth0:ucarp inet static
  ~ $ sudo /etc/init.d/networking restart
  ~ $ sudo apt-get install nginx
  
-     upstream rocket {
+ #Certificat
+ ~ $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/nginx/ssl/k8s.key -out /etc/nginx/ssl/k8s.crt
+ 
+ #Configuration de /etc/nginx/sites-available/default
+    upstream rocket {
         server 10.25.25.100:30080;
         server 10.25.25.110:30080;
         server 10.25.25.120:30080;
@@ -72,12 +76,18 @@ iface eth0:ucarp inet static
         server 10.25.25.140:30080;
     }
 
+
     server {
-        listen 80;
+        listen 443 ssl;
+
+        server_name www.k8s.fr;
+        ssl_certificate /etc/nginx/ssl/k8s.crt;
+        ssl_certificate_key /etc/nginx/ssl/k8s.key;
 
         location /rocket {
             proxy_pass http://rocket;
         }
     }
+
 
 
