@@ -8,6 +8,7 @@ Virtual IP : 10.25.25.90
 ******* Master *******
 ######################
 
+ ~ $ sudo apt-get update
  ~ $ sudo apt-get install ucarp
  ~ $ sudo nano /etc/network/interfaces
 
@@ -31,16 +32,17 @@ iface eth0:ucarp inet static
         netmask 255.255.255.0
         
  ~ $ sudo /etc/init.d/networking restart
+ ~ $ sudo apt-get install nginx
         
 #####################
 ******* Slave *******
 #####################
 
+ ~ $ sudo apt-get update
  ~ $ sudo apt-get install ucarp
  ~ $ sudo nano /etc/network/interfaces
- #########################
+
  # ucarp configuration
- #########################
  # vid : The ID of the virtual server [1-255]
  ucarp-vid 1
  # vip : The virtual address
@@ -60,6 +62,7 @@ iface eth0:ucarp inet static
  netmask 255.255.255.0
  
  ~ $ sudo /etc/init.d/networking restart
+ ~ $ sudo apt-get install nginx
  
  
 http {
