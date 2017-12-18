@@ -14,7 +14,7 @@ spec:
        image: rocket.chat
        env:
        - name: ROOT_URL
-         value: http://chat.giaime.fr
+         value: http://10.25.25.90/rocket
        - name: MONGO_URL
          value: mongodb://mongo-service/rocketchat
 #     nodeSelector:
