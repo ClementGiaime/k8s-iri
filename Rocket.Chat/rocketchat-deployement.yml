@@ -17,5 +17,11 @@ spec:
          value: http://10.25.25.90/rocket
        - name: MONGO_URL
          value: mongodb://mongo-service/rocketchat
+#       readinessProbe:
+#         httpGet:
+#           path: /rocket/index.php
+#           port: 3000
+#         initialDelaySeconds: 30
+#         periodSeconds: 30
 #     nodeSelector:
 #       TypeOfPod: rocketchat
