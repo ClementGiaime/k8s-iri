@@ -34,6 +34,8 @@ spec:
       mountPath: /srv/gluster/PostgreSQL
     - name: mount-redis
       mountPath: /srv/gluster/Redis
+    - name: mount-redis
+      mountPath: /srv/gluster/GitLab
     securityContext:
         capabilities:
           add:

@@ -30,3 +30,19 @@ spec:
     protocol: TCP
     port: 49153
     targetPort: 49153
+  - name: threebrick
+    protocol: TCP
+    port: 49154
+    targetPort: 49154
+  - name: fourbrick
+    protocol: TCP
+    port: 49155
+    targetPort: 49155
+  - name: fivebrick
+    protocol: TCP
+    port: 49156
+    targetPort: 49156
+  - name: sixbrick
+    protocol: TCP
+    port: 49157
+    targetPort: 49157
