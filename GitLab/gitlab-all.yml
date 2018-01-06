@@ -7,7 +7,7 @@ data:
  #gitlab-rb-file-name: gitlabt
  # file-like keys
  gitlab.rb: |
-   external_url "http://10.25.25.90/gitlab"
+   external_url "https://k8siri.hopto.org/gitlab"
    # Disable the built-in Postgres
    postgresql['enable'] = false
    # Fill in the values for database.yml
