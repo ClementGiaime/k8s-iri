@@ -1,0 +1,93 @@
+#installation de UCAP
+
+Master : 10.25.25.91
+Slave : 10.25.25.92
+Virtual IP : 10.25.25.90
+
+######################
+******* Master *******
+######################
+
+ ~ $ sudo apt-get update
+ ~ $ sudo apt-get install ucarp
+ ~ $ sudo nano /etc/network/interfaces
+
+  # ucarp configuration
+  # vid : The ID of the virtual server [1-255]
+  ucarp-vid 1
+  # vip : The virtual address
+  ucarp-vip 192.168.1.250
+  # password : A password used to encrypt Carp communications
+  ucarp-password secret
+  # advskew : Advertisement skew [1-255]
+  ucarp-advskew 1
+  # advbase : Interval in seconds that advertisements will occur
+  ucarp-advbase 1
+  # master : determine if this server is the master
+  ucarp-master yes
+
+# The carp network interface, on top of eth0
+iface eth0:ucarp inet static
+        address 192.168.1.250
+        netmask 255.255.255.0
+        
+ ~ $ sudo /etc/init.d/networking restart
+ ~ $ sudo apt-get install nginx
+        
+#####################
+******* Slave *******
+#####################
+
+ ~ $ sudo apt-get update
+ ~ $ sudo apt-get install ucarp
+ ~ $ sudo nano /etc/network/interfaces
+
+ # ucarp configuration
+ # vid : The ID of the virtual server [1-255]
+ ucarp-vid 1
+ # vip : The virtual address
+ ucarp-vip 192.168.1.250
+ # password : A password used to encrypt Carp communications
+ ucarp-password secret
+ # advskew : Advertisement skew [1-255]
+ ucarp-advskew 100
+ # advbase : Interval in seconds that advertisements will occur
+ ucarp-advbase 1
+ # master : determine if this server is the master
+ ucarp-master no
+
+# The carp network interface, on top of eth0
+iface eth0:ucarp inet static
+ address 192.168.1.250
+ netmask 255.255.255.0
+ 
+ ~ $ sudo /etc/init.d/networking restart
+ ~ $ sudo apt-get install nginx
+ 
+ #Certificat
+ ~ $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/nginx/ssl/k8s.key -out /etc/nginx/ssl/k8s.crt
+ 
+ #Configuration de /etc/nginx/sites-available/default
+    upstream rocket {
+        server 10.25.25.100:30080;
+        server 10.25.25.110:30080;
+        server 10.25.25.120:30080;
+        server 10.25.25.130:30080;
+        server 10.25.25.140:30080;
+    }
+
+
+    server {
+        listen 443 ssl;
+
+        server_name www.k8s.fr;
+        ssl_certificate /etc/nginx/ssl/k8s.crt;
+        ssl_certificate_key /etc/nginx/ssl/k8s.key;
+
+        location /rocket {
+            proxy_pass http://rocket;
+        }
+    }
+
+
+

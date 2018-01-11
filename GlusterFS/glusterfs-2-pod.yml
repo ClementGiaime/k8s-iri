@@ -36,6 +36,8 @@ spec:
       mountPath: /srv/gluster/Redis
     - name: mount-gitlab
       mountPath: /srv/gluster/GitLab
+    - name: mount-rocketchat
+      mountPath: /srv/gluster/RocketChat
     securityContext:
         capabilities:
           add:
@@ -57,5 +59,8 @@ spec:
   - name: mount-gitlab
     hostPath:
       path: /srv/gluster/GitLab
+  - name: mount-rocketchat
+    hostPath:
+      path: /srv/gluster/RocketChat
   nodeSelector:
     TypeOfPod: gluster-2

@@ -1,0 +1,9 @@
+#!/bin/bash
+kubectl delete -f GitLab/
+kubectl delete -f Rocket.Chat/
+kubectl delete -f PostgreSQL/
+kubectl delete -f Redis/
+kubectl delete -f GlusterFS/
+kubectl delete -f Mongo/
+clear
+kubectl get pod -o wide

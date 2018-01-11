@@ -17,6 +17,17 @@ spec:
          value: http://k8siri.hopto.org/rocket
        - name: MONGO_URL
          value: mongodb://mongo-service/rocketchat
+       volumeMounts:
+       - name: rocketchat-volume
+         mountPath: /tmp
+     volumes:
+     - name: rocketchat-volume
+       glusterfs:
+         endpoints: gluster-service
+         path: /volume-RocketChat
+         readOnly: false
+
+
 #       readinessProbe:
 #         httpGet:
 #           path: /rocket/index.php

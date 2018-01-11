@@ -1,0 +1,7 @@
+kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-GitBucket replica 2 $gluster1ip:/srv/gluster/GitBucket $gluster2ip:/srv/gluster/GitBucket force"
+kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Redis replica 2 $gluster1ip:/srv/gluster/Redis $gluster2ip:/srv/gluster/Redis force"
+
+
+kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-GitBucket"
+kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-Redis"
+

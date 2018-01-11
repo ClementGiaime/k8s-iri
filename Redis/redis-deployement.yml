@@ -12,12 +12,12 @@ spec:
      containers:
      - name: redis-container
        image: redis:4.0.5
-       volumeMounts:
-       - name: redis-volume
-         mountPath: /data
-     volumes:
-     - name: redis-volume
-       glusterfs:
-         endpoints: gluster-service
-         path: /volume-Redis
-         readOnly: false
+#       volumeMounts:
+#       - name: redis-volume
+#         mountPath: /data
+#     volumes:
+#     - name: redis-volume
+#       glusterfs:
+#         endpoints: gluster-service
+#         path: /volume-Redis
+#         readOnly: false
