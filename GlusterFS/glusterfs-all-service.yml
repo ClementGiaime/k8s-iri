@@ -29,7 +29,7 @@ spec:
   - name: secondbrick
     protocol: TCP
     port: 49153
-    targetPort: 49153
+    targetPort: 48153
   - name: threebrick
     protocol: TCP
     port: 49154

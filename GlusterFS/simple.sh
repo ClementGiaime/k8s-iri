@@ -40,8 +40,8 @@ read name ready  status restarts age ip node <<< `echo $get`
 gluster2ip=$ip
 
 #Create repo /srv/gluster/  [ PostgreSQL, Mongo, GitBucket ]
-kubectl exec -ti gluster-1-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket /srv/gluster/Redis /srv/gluster/GitLab"
-kubectl exec -ti gluster-2-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket /srv/gluster/Redis /srv/gluster/GitLab"
+kubectl exec -ti gluster-1-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket /srv/gluster/Redis /srv/gluster/GitLab /srv/gluster/Rocket"
+kubectl exec -ti gluster-2-pod -- bash -c "mkdir /srv/gluster/PostgreSQL /srv/gluster/Mongo /srv/gluster/GitBucket /srv/gluster/Redis /srv/gluster/GitLab /srv/gluster/Rocket"
 
 #Add resolv on /etc/hosts
 kubectl exec -ti gluster-1-pod -- bash -c "gluster peer probe $gluster2ip"
@@ -51,6 +51,7 @@ kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Mongo re
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-GitBucket replica 2 $gluster1ip:/srv/gluster/GitBucket $gluster2ip:/srv/gluster/GitBucket force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-Redis replica 2 $gluster1ip:/srv/gluster/Redis $gluster2ip:/srv/gluster/Redis force"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume create volume-GitLab replica 2 $gluster1ip:/srv/gluster/GitLab $gluster2ip:/srv/gluster/GitLab force"
+
 
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-PostgreSQL"
 kubectl exec -ti gluster-1-pod -- bash -c "gluster volume start volume-Mongo"
