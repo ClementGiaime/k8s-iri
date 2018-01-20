@@ -8,6 +8,9 @@ data:
  # file-like keys
  gitlab.rb: |
    external_url "http://k8siri.hopto.org/gitlab"
+   high_availability['mountpoint'] = '/var/opt/gitlab/git-data'
+   # Disable components that will not be on the GitLab application server
+   roles ['application_role']
    # Disable the built-in Postgres
    postgresql['enable'] = false
    # Fill in the values for database.yml
